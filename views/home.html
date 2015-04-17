@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="http://cdn.bootcss.com/semantic-ui/1.11.6/semantic.min.css">
+<style>
+body {
+	background-color: #F7F7F7;
+}
+.container {
+  background-color: #FFFFFF;
+  margin: 0em auto;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.05);
+  border-left: 1px solid #DDDDDD;
+  border-right: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+  padding: 2em 2em 7em;
+  margin: 0px auto;
+  width: 600px;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 class="ui dividing header">
+    	<i class="rss square icon" style="float:left;"></i>
+    	<div class="content">
+    		RSS生成器
+		    <p class="sub header">提供微信公众号RSS订阅接口</p>
+    	</div>
+    </h1>
+	<form class="ui fluid action input" id="search-form">
+        <input type="text" placeholder="请输入微信公众号openId" id="search-text">
+        <button class="ui icon button">
+            <i class="search icon"></i>
+        </button> 
+    </form>
+
+	<div class="ui info message" style="display:none;" id="info-message">
+		<div class="header">微信公众号RSS链接：</div>
+	  	<p id="info-message-url"></p>
+	</div>
+	<div class="ui segment" style="margin-top:30px;">
+		<div class="ui top attached label"><i class="list icon"></i> 搜索历史记录</div>
+		<div>
+			<div class="ui label">oIWsFt0GzJ9B8He5MfCo4DpkeYBg <i class="delete icon"></i> </div>
+			<div class="ui label">oIWsFt0GzJ9B8He5MfCo4DpkeYBg <i class="delete icon"></i> </div>
+		</div>
+	</div>
+	<h4 class="ui dividing header">提示</h4>
+	<div class="ui list">
+      <div class="item">
+        <span>获取微信公众号openid方法：</span>
+        <ul class="list">
+            <li class="item">
+            	<i class="right triangle icon"></i> 
+            	<p class="content">
+            		<a href="http://weixin.sogou.com/" target="_blank">搜狗</a> 搜索喜欢的微信公众号
+            	</p>
+            </li>
+            <li class="item">
+            	<i class="right triangle icon"></i> 
+                <p class="content">
+                    通过URL获取openid，如: http://weixin.sogou.com/gzh?openid=<strong>oIWsFt0GzJ9B8He5MfCo4DpkeYBg</strong>
+                </p>
+            </li>
+        </div>
+      </div>
+    </div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.js"></script>
+<script>
+$(function() {
+    $('#search-form').submit(function() {
+        var keyword = $.trim($('#search-text').val());
+        if (keyword.length === 0) {
+            alert('请输入微信公众号openId');
+        } else if (keyword.length !== 28) {
+            alert('请输入28位长度的openId');
+        } else {
+            var url =  window.location.origin + '/weixin/' + keyword;
+            var html = '<a href="' + url + '" target="_blank">' + url + '</a>';
+            $('#info-message-url').html(html);
+            $('#info-message').show();
+        }
+        return false;
+    });
+});
+</script>
+</body>
+</html>

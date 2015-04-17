@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+	<title>{{ rss.title }}</title>
+	<subtitle>A subtitle.</subtitle>
+	<link href="http://example.org/feed/" rel="self" />
+	<link href="http://example.org/" />
+	<id>{{ rss.id }}</id>
+	<updated>{{ rss.updated }}</updated>
+	<author>
+		<name>{{ rss.author }}</name>
+	</author>
+ 	{% for item in rss.items  %}
+	<entry>
+		<title>{{ item.title }}</title>
+		<link rel="alternate" type="text/html" href="{{ item.url }}"/>
+		<id>{{ item.docid }}</id>
+		<updated>{{ item.date }}</updated>
+		<summary>{{ item.content }}</summary>
+	</entry>
+ 	{% endfor %}
+</feed>
