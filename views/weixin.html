@@ -4,8 +4,7 @@
  
 	<title>{{ rss.title }}</title>
 	<subtitle>A subtitle.</subtitle>
-	<link href="http://example.org/feed/" rel="self" />
-	<link href="http://example.org/" />
+	<link href="http://rss.wlwr.net/weixin/{{ rss.id }}" rel="self" />
 	<id>{{ rss.id }}</id>
 	<updated>{{ rss.updated }}</updated>
 	<author>
@@ -17,7 +16,7 @@
 		<link rel="alternate" type="text/html" href="{{ item.url }}"/>
 		<id>{{ item.docid }}</id>
 		<updated>{{ item.date }}</updated>
-		<summary>{{ item.content }}</summary>
+		<summary>{{ item.fullContent ? item.fullContent : item.content }}</summary>
 	</entry>
  	{% endfor %}
 </feed>
