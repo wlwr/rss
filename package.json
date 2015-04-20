@@ -1,18 +1,20 @@
 {
   "name": "rss",
   "version": "1.0.0",
-  "description": "rss builder",
-  "main": "index.js",
+  "description": "rss-builder",
+  "main": "app.js",
   "dependencies": {
-    "co-views": "^0.3.0",
+    "co": "^4.5.2",
     "co-body": "^1.1.0",
-    "koa-request": "^1.0.0",
+    "co-views": "^0.3.0",
+    "co-redis": "^1.1.1",
+    "koa": "^0.18.1",
     "koa-logger": "^1.2.2",
-    "koa-route": "^2.4.0",
+    "koa-route": "^2.4.1",
+    "redis": "^0.12.1",
     "request": "^2.55.0",
     "swig": "^1.4.2",
-    "xml2json": "^0.6.1",
-    "koa": "^0.18.1"
+    "xml2json": "^0.6.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -23,8 +25,8 @@
     "url": "https://github.com/wlwr/rss.git"
   },
   "keywords": [
-    "rss",
-    "weixin"
+    "weixin",
+    "rss"
   ],
   "author": "wlwr",
   "license": "ISC",
