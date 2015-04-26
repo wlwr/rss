@@ -9,7 +9,7 @@
 
 - 安装 `Node.js 0.11` 以上或 `io.js`，才支持 ES6相关语法
 
-- 安装 `Reder-server` 端，默认端口是 `6379`
+- 安装 `redis-server` 端，默认端口是 `6379`
 
 
 进入项目根目录, `npm install`，然后 `node app` 即可启动
