@@ -2,30 +2,19 @@
 <html lang="zh-cn">
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
-<link rel="stylesheet" href="http://cdn.bootcss.com/semantic-ui/1.11.6/semantic.min.css">
+<title>RSS生成器 - 提供微信公众号RSS订阅接口</title>
+<link rel="stylesheet" href="http://cdn.bootcss.com/semantic-ui/1.12.0/semantic.min.css">
 <style>
-body {
-	background-color: #F7F7F7;
-}
-.container {
-  background-color: #FFFFFF;
-  margin: 0em auto;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.05);
-  border-left: 1px solid #DDDDDD;
-  border-right: 1px solid #DDDDDD;
-  border-bottom: 1px solid #DDDDDD;
-  padding: 2em 2em 7em;
-  margin: 0px auto;
-  width: 600px;
-}
-
+body { background-color: #F7F7F7; }
+.container { background-color: #FFFFFF; margin: 0em auto; box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.05); border-left: 1px solid #DDDDDD; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; padding: 2em 2em 1em 2em; margin: 0px auto; width: 600px; position: relative;}
+.ui.list .item a { color: #009fda !important; text-decoration: underline; }
+.footer {text-align: center; padding-top: 80px;}
 </style>
 </head>
 <body>
 <div class="container">
     <h1 class="ui dividing header">
-    	<i class="rss square icon" style="float:left;"></i>
+    	<i class="rss square icon"></i>
     	<div class="content">
     		RSS生成器
 		    <p class="sub header">提供微信公众号RSS订阅接口</p>
@@ -51,24 +40,33 @@ body {
 	</div>
 	<h4 class="ui dividing header">提示</h4>
 	<div class="ui list">
-      <div class="item">
-        <span>获取微信公众号openid方法：</span>
-        <ul class="list">
-            <li class="item">
-            	<i class="right triangle icon"></i> 
-            	<p class="content">
-            		<a href="http://weixin.sogou.com/" target="_blank">搜狗</a> 搜索喜欢的微信公众号
-            	</p>
-            </li>
-            <li class="item">
-            	<i class="right triangle icon"></i> 
-                <p class="content">
-                    通过URL获取openid，如: http://weixin.sogou.com/gzh?openid=<strong>oIWsFt0GzJ9B8He5MfCo4DpkeYBg</strong>
-                </p>
-            </li>
+        <div class="item">
+            <span>获取微信公众号openid方法：</span>
+            <ul class="list">
+                <li class="item">
+                	<i class="right triangle icon"></i> 
+                	<p class="content">
+                		<a href="http://weixin.sogou.com/" target="_blank">搜狗</a> 搜索喜欢的微信公众号
+                	</p>
+                </li>
+                <li class="item">
+                	<i class="right triangle icon"></i> 
+                    <p class="content">
+                        通过URL获取openid，如: http://weixin.sogou.com/gzh?openid=<strong>oIWsFt0GzJ9B8He5MfCo4DpkeYBg</strong>
+                    </p>
+                </li>
+            </ul>
         </div>
-      </div>
     </div>
+
+    <footer class="footer">
+        RSS-Builder on koajs run in iojs version v0.1.0
+        <a class="popup icon github item" data-content="在GitHub中查看项目" href="https://github.com/wlwr/rss" target="_blank">
+        <i class="alternate github icon"></i>
+      </a>           
+    </footer>
+
+
 </div>
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.js"></script>
 <script>
