@@ -41,9 +41,13 @@ function *home() {
 
 function *weixin(id) {
   var handler = factory.create('weixin', id);
-  var rss = yield handler.getData();
-  this.type = 'text/xml; charset=UTF-8';
-  this.body = yield render('weixin', {rss : rss});
+  var data = yield handler.getData();
+  if (data.error) {
+    this.body = data.error;
+  } else {
+    this.type = 'text/xml; charset=UTF-8';
+    this.body = yield render('weixin', {rss : data});    
+  }
 }
 
 
