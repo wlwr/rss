@@ -9,6 +9,8 @@ var parse = require('co-body');
 var koa = require('koa');
 var render = require('./lib/render');
 var factory = require('./lib/factory');
+var counter = require('./lib/counter');
+
 
 var app = koa();
 // "database"
@@ -31,7 +33,8 @@ app.use(route.get('/weixin/:id', weixin));
  */
 
 function *home() {
-  this.body = yield render('home');
+  var count = yield counter.get();
+  this.body = yield render('home', {count : count});
 }
 
 
@@ -42,6 +45,7 @@ function *home() {
 function *weixin(id) {
   var handler = factory.create('weixin', id);
   var data = yield handler.getData();
+  yield counter.incr();
   if (data.error) {
     this.body = data.error;
   } else {
