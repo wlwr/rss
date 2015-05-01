@@ -47,6 +47,7 @@ function *weixin(id) {
   var data = yield handler.getData();
   yield counter.incr();
   if (data.error) {
+    console.log(data.error);
     this.body = data.error;
   } else {
     this.type = 'text/xml; charset=UTF-8';
