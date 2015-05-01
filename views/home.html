@@ -31,6 +31,10 @@ body { background-color: #F7F7F7; }
 		<div class="header">微信公众号RSS链接：</div>
 	  	<p id="info-message-url"></p>
 	</div>
+    <div class="ui error message" style="display:none;" id="error-message">
+        <div class="header">错误提示</div>
+        <p id="error-message-txt"></p>
+    </div>
 	<div class="ui segment" style="margin-top:30px;display:none;">
 		<div class="ui top attached label"><i class="list icon"></i> 搜索历史记录</div>
 		<div>
@@ -76,9 +80,9 @@ $(function() {
     $('#search-form').submit(function() {
         var keyword = $.trim($('#search-text').val());
         if (keyword.length === 0) {
-            alert('请输入微信公众号openId');
+            errorMessage('请输入微信公众号openId');
         } else if (keyword.length !== 28) {
-            alert('请输入28位长度的openId');
+            errorMessage('请输入28位长度的openId');
         } else {
             var url =  window.location.origin + '/weixin/' + keyword;
             var html = '<a href="' + url + '" target="_blank">' + url + '</a>';
@@ -88,6 +92,15 @@ $(function() {
         return false;
     });
 });
+var timer = null;
+function errorMessage(msg) {
+    clearTimeout(timer);
+    $('#error-message').show();
+    $('#error-message-txt').text(msg);
+    timer = setTimeout(function() {
+        $('#error-message').fadeOut();
+    }, 2000);
+}
 </script>
 </body>
 </html>
