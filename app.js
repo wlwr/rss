@@ -23,7 +23,7 @@ app.use(logger());
 // route middleware
 
 app.use(route.get('/', home));
-app.use(route.get('/_weixin/:id', weixin));
+app.use(route.get('/weixin/:id', weixin));
 
 
 // route definitions

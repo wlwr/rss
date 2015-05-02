@@ -8,7 +8,7 @@ module.exports = {
 	},
 
 	listCachePolicy: {
-		lifeTime: 43200,
+		lifeTime: 86400,
 		cacheId: 'rss:list:%s'
 	},
 
