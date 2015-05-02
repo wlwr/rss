@@ -8,6 +8,6 @@ module.exports = {
     port: '6379',
   },
 
-  proxy: 'http://101.69.199.99:80'
+  proxy: 'http://114.36.105.161:8088'
 
 }
