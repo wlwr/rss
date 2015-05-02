@@ -20,7 +20,7 @@ module.exports = {
 	cookieNum : 10,
 
 	cookieCachePolicy: {
-		lifeTime: 21600,
+		lifeTime: 43200,
 		cacheId: 'rss:cookies'
 	}
 }
