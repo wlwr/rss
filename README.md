@@ -12,7 +12,7 @@
 - 安装 `redis-server` 端，默认端口是 `6379`
 
 
-进入项目根目录, `npm install`，然后 `node app` 即可启动
+进入项目根目录, `npm install`，然后 `node --harmony app.js` 即可启动
 
 ----
 
