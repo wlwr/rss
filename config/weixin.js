@@ -3,7 +3,7 @@ module.exports = {
 	cacheEnable: true,
 
 	api: {
-		getList: 'http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&openid=%s&page=1&t=%d',
+		getList: 'http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&%s&page=1&t=%d',
 		getCookie: 'http://weixin.sogou.com/weixin?query=%s'
 	},
 
