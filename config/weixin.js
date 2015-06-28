@@ -4,7 +4,13 @@ module.exports = {
 
 	api: {
 		getList: 'http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&openid=%s&%s&page=1&t=%d',
-		getCookie: 'http://weixin.sogou.com/weixin?query=%s'
+		getCookie: 'http://weixin.sogou.com/weixin?query=123',
+		getEncryptSalt: 'http://weixin.sogou.com/gzh?openid=123'
+	},
+
+	saltCachePolicy : {
+		lifeTime: 600,
+		cacheId: 'rss:salt:%s'		
 	},
 
 	listCachePolicy: {
@@ -16,6 +22,9 @@ module.exports = {
 		lifeTime: 864000,
 		cacheId: 'rss:content:%s'
 	},
+
+	//options : request || phantom
+	cookieCollectEngine : 'phantom',
 
 	cookieNum : 10,
 

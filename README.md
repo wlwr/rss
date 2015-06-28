@@ -5,6 +5,8 @@
 
 ## 更新日志
 
+- 2015.06.28 cookie池采集采用 `phantomjs`，及 加密盐值采集
+
 - 2015.05.22 搜狗微信接口做了加密处理，导致采集失败。(已修复)
 
 ---
@@ -14,6 +16,8 @@
 - 安装 `io.js` 或 `Node.js 0.11` 以上版本，才支持 ES6相关语法
 
 - 安装 `redis-server` 端，默认端口是 `6379`
+
+- 安装 `phantomjs`，安装方法见：[http://phantomjs.org/download.html](http://phantomjs.org/download.html)
 
 
 进入项目根目录, `npm install`，然后 `node --harmony app.js` 即可启动
