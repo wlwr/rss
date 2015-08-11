@@ -1,7 +1,7 @@
 module.exports = {
 
 
-  // proxyEnable: true,
+  proxyEnable: false,
 
   redis: {
     host: '127.0.0.1',

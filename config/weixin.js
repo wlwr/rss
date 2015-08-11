@@ -5,7 +5,8 @@ module.exports = {
 	api: {
 		getList: 'http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&openid=%s&%s&page=1&t=%d',
 		getCookie: 'http://weixin.sogou.com/weixin?query=123',
-		getEncryptSalt: 'http://weixin.sogou.com/gzh?openid=123'
+		getEncryptSalt: 'http://weixin.sogou.com/gzh?openid=123',
+		searchName: 'http://weixin.sogou.com/weixin?query=%s'
 	},
 
 	saltCachePolicy : {
@@ -21,6 +22,11 @@ module.exports = {
 	contentCachePolicy: {
 		lifeTime: 864000,
 		cacheId: 'rss:content:%s'
+	},
+
+	searchCachePolicy: {
+		lifeTime: 864000,
+		cacheId: 'rss:search:%s'		
 	},
 
 	//options : request || phantom

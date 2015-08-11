@@ -9,6 +9,12 @@ body { background-color: #F7F7F7; }
 .container { background-color: #FFFFFF; margin: 0em auto; box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.05); border-left: 1px solid #DDDDDD; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; padding: 2em 2em 1em 2em; margin: 0px auto; width: 600px; position: relative;}
 .ui.list .item a { color: #009fda !important; text-decoration: underline; }
 .footer {text-align: center; padding-top: 80px;}
+.ui.items>.item>.image:not(.ui) {width: 50px; height: 50px; }
+.ui.items>.item>.image>img{border-radius: 25px;}
+.user-items {font-size: 12px; padding-bottom: 20px;}
+.ui[class*="very relaxed"].items>.item {padding: 1em 0px; border-bottom: 1px solid #eee; margin:0px;}
+.search-title {font-size: 14px; padding-bottom: 10px;}
+.user-items .item:hover{background-color: #fafafa; cursor: pointer;}
 </style>
 </head>
 <body>
@@ -20,12 +26,17 @@ body { background-color: #F7F7F7; }
 		    <p class="sub header">提供微信公众号RSS订阅接口</p>
     	</div>
     </h1>
-	<form class="ui fluid action input" id="search-form">
-        <input type="text" placeholder="请输入微信公众号openId" id="search-text">
+	<form class="ui fluid action input form" id="search-form">
+        <input type="text" placeholder="请输入微信公众号名称 或 openId" id="search-text">
         <button class="ui icon button">
             <i class="search icon"></i>
         </button> 
     </form>
+
+    <div class="ui very relaxed items user-items" id="user-items">
+        
+    </div>
+    <!-- user-items end -->
 
 	<div class="ui info message" style="display:none;" id="info-message">
 		<div class="header">微信公众号RSS链接：</div>
@@ -78,18 +89,49 @@ body { background-color: #F7F7F7; }
 <script>
 $(function() {
     $('#search-form').submit(function() {
+        var self = this;
+        $('#user-items').hide();
         var keyword = $.trim($('#search-text').val());
         if (keyword.length === 0) {
-            errorMessage('请输入微信公众号openId');
-        } else if (keyword.length !== 28) {
-            errorMessage('请输入28位长度的openId');
-        } else {
+            errorMessage('请输入微信公众号名称 或 openId');
+        } else if (keyword.length == 28) {
             var url =  window.location.origin + '/weixin/' + keyword;
             var html = '<a href="' + url + '" target="_blank">' + url + '</a>';
             $('#info-message-url').html(html);
             $('#info-message').show();
+        } else {
+            $(this).addClass('loading');
+            $.getJSON('/search/' + keyword, function(res) {
+                $(self).removeClass('loading');
+                if (res.error) {
+                    return errorMessage(res.message);
+                } else {
+                    var users = res.data;
+                    var html = '<h2 class="search-title">查询结果 (' + users.length + ')</h2>';
+                    for (var i = 0; i < users.length; i++) {
+                        var user = users[i];
+                        var url =  window.location.origin + '/weixin/' + user.openid;
+                        var template = '<div class="item block-click" data-url="'+ url +'">' +
+                            '<div class="image pic">' +
+                            '<img src="'+ user.pic +'">' +
+                            '</div>' +
+                            '<div class="content">' +
+                            '<a class="ui header" href="'+ url +'" target="_blank">'+ user.name +'</a>' +
+                            '<div class="description">' +
+                            '<p>'+ user.description +'</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                        html += template;
+                    };
+                    $('#user-items').html(html).show();
+                }
+            });
         }
         return false;
+    });
+    $('.block-click').click(function() {
+        window.open($(this).attr('data-url'));
     });
 });
 var timer = null;

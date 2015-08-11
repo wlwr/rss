@@ -24,6 +24,7 @@ app.use(logger());
 
 app.use(route.get('/', home));
 app.use(route.get('/weixin/:id', weixin));
+app.use(route.get('/search/:keyword', search));
 
 
 // route definitions
@@ -52,6 +53,18 @@ function *weixin(id) {
   } catch (err) {
     console.log(err);
     this.body = err.message;
+  }
+}
+
+function *search(keyword) {
+  try {
+    var handler = factory.create('weixin');
+    var html = yield handler.searchName(keyword);
+    var result = {error : false, data : html, message : 'success'};
+    this.body = JSON.stringify(result);
+  } catch (err) {
+    console.log(err);
+    this.body = {error : true, data : null, message : err.message};
   }
 }
 
