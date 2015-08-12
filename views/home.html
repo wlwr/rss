@@ -116,7 +116,7 @@ $(function() {
                             '<img src="'+ user.pic +'">' +
                             '</div>' +
                             '<div class="content">' +
-                            '<a class="ui header" href="'+ url +'" target="_blank">'+ user.name +'</a>' +
+                            '<p class="ui header" >'+ user.name +'</p>' +
                             '<div class="description">' +
                             '<p>'+ user.description +'</p>' +
                             '</div>' +
@@ -130,7 +130,7 @@ $(function() {
         }
         return false;
     });
-    $('.block-click').click(function() {
+    $('body').on('click', '.block-click', function() {
         window.open($(this).attr('data-url'));
     });
 });
