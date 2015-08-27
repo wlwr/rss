@@ -11,7 +11,7 @@ module.exports = {
 
 	saltCachePolicy : {
 		lifeTime: 600,
-		cacheId: 'rss:salt:%s'		
+		cacheId: 'rss:salt'		
 	},
 
 	listCachePolicy: {
