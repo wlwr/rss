@@ -59,7 +59,7 @@ function *weixin(id) {
 function *search(keyword) {
   try {
     var handler = factory.create('weixin');
-    var html = yield handler.searchName(keyword);
+    var html = yield handler.searchNameProxy(keyword);
     var result = {error : false, data : html, message : 'success'};
     this.body = JSON.stringify(result);
   } catch (err) {

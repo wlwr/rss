@@ -3,10 +3,16 @@ module.exports = {
 	cacheEnable: true,
 
 	api: {
-		getList: 'http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&openid=%s&%s&page=1&t=%d',
+		getList: 'http://weixin.sogou.com/gzhjs?cb=sogou.weixin.gzhcb&openid=%s&ext=%s&page=1&t=%d',
 		getCookie: 'http://weixin.sogou.com/weixin?query=123',
 		getEncryptSalt: 'http://weixin.sogou.com/gzh?openid=123',
-		searchName: 'http://weixin.sogou.com/weixin?query=%s'
+		searchName: 'http://weixin.sogou.com/weixin?query=%s',
+		getExt: 'http://weixin.sogou.com/gzh?openid=%s'
+	},
+
+	extCachePolicy : {
+		liftTime: 86400,
+		cacheId: 'rss:ext:%s'
 	},
 
 	saltCachePolicy : {
