@@ -11,7 +11,7 @@ module.exports = {
 	},
 
 	extCachePolicy : {
-		liftTime: 86400,
+		liftTime: 8640,
 		cacheId: 'rss:ext:%s'
 	},
 
