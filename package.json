@@ -14,8 +14,7 @@
     "redis": "^0.12.1",
     "request": "^2.55.0",
     "swig": "^1.4.2",
-    "xml2json": "^0.6.1",
-    "phantom": "^0.7.2"
+    "xml2json": "^0.6.1"
   },
   "devDependencies": {},
   "scripts": {

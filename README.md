@@ -7,6 +7,10 @@
 
 ## 更新日志
 
+- 2015.04.26 搜狗接口变更 (已修复) 
+    1. 去掉 `phantomjs` 依赖，不再需要定时生成cookie池 (好消息)
+    2. 以前搜狗的openid标识失效，改用微信号ID作为标识 (坏消息)
+
 - 2015.10.20 搜狗调整加密请求方式 (已修复)
 
 - 2015.08.11 增加微信账号查询功能
@@ -23,23 +27,12 @@
 
 - 安装 `redis-server` 端，默认端口是 `6379`
 
-- 安装 `phantomjs`，安装方法见：[http://phantomjs.org/download.html](http://phantomjs.org/download.html)
-
 
 进入项目根目录, `npm install`，然后 `node --harmony app.js` 即可启动
 
 ----
 
-## 反反爬虫机制
-
-请求过多会触发搜狗的反爬虫机制，搜狗的反爬虫机制主要通过cookie识别。
-
-可通过定时生成cookie池 (执行 `node task/cookiePool`)，然后每次请求会从cookie池里随机取。
-
-
 ## 截图：
-
-![首页](demo/home.png)
 
 ![查询](demo/search.png)
 
