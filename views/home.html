@@ -110,7 +110,7 @@ $(function() {
                     var html = '<h2 class="search-title">查询结果 (' + users.length + ')</h2>';
                     for (var i = 0; i < users.length; i++) {
                         var user = users[i];
-                        var url =  window.location.origin + '/weixin/' + user.openid;
+                        var url =  window.location.origin + '/weixin/' + user.id;
                         var template = '<div class="item block-click" data-url="'+ url +'">' +
                             '<div class="image pic">' +
                             '<img src="'+ user.pic +'">' +
