@@ -19,7 +19,7 @@
         	{% endautoescape %}
             
           	<pubDate>{{ item.formatDate }}</pubDate>
-          	<guid>{{ item.url }}</guid>
+          	<guid>{{ 'weixin_' + item.docid }}</guid>
         </item>
     	{% endfor %}
   </channel>
